@@ -7,12 +7,10 @@ export const GenericContainer = styled(Box)`
     margin: 0px;
     margin-bottom: 0px;
     min-height: 100vh;
-    overflow-y: auto !important;
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: left;
-    overflow-x: hidden !important;
     -webkit-overflow-scrolling: auto !important;
     width: 100%;`
     /* padding: 3px 0.5em;

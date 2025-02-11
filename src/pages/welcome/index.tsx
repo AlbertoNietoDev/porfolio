@@ -1,9 +1,12 @@
-import { Box, Divider, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import { GenericContainer } from "../../components/GeneralContainer";
 import { palette } from "../../theme/palette";
 import { useStyles } from "./welcomeStyle";
 import { useNavigate } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { HashLink } from "react-router-hash-link";
+import { useEffect, useState } from "react";
 
 //Interfaces
 interface HeaderProps {
@@ -12,6 +15,9 @@ interface HeaderProps {
 }
 interface BodyProps {
   mainStyle: any;
+}
+interface ArrowProps {
+  referSection: string;
 }
 
 //Constants
@@ -35,14 +41,37 @@ export const Welcome: React.FC = () => {
       <GeneralBackground />
       <HeaderDrawer mainStyle={welcomeStyles} OnRedirect={handleRedirect} />
       <BodyCustom mainStyle={welcomeStyles} />
-      <Box sx={{zIndex: 100, height: '90vh', width: "100%", border: '2px solid red'}}>adads</Box>
+      <AboutSection />
+      <ContactSection />
     </GenericContainer>
   );
 };
 
 const HeaderDrawer: React.FC<HeaderProps> = ({ mainStyle, OnRedirect }) => {
+  const [hasBackground, setHasBackground] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        setHasBackground(true);
+      } else {
+        setHasBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Box className={mainStyle.headerDrawer}>
+    <Box
+      className={mainStyle.headerDrawer}
+      sx={{
+        backgroundColor: hasBackground ? "rgba(0,0,0,0.2)" : "transparent",
+      }}
+    >
       <Typography variant="h3">
         <span className={mainStyle.spanTitleSyle}>{`{ : }`}</span> Developer X
       </Typography>
@@ -53,13 +82,18 @@ const HeaderDrawer: React.FC<HeaderProps> = ({ mainStyle, OnRedirect }) => {
         }}
       >
         {navItems.map((item) => (
-          <Box
+          <HashLink
             key={item}
-            className="boxOptionsDrawer"
-            onClick={() => OnRedirect(item)}
+            to={`#${item.toLowerCase()}`}
+            smooth
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <Typography variant="body2">{item}</Typography>
-          </Box>
+            <Box className="boxOptionsDrawer">
+              <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                {item}
+              </Typography>
+            </Box>
+          </HashLink>
         ))}
       </Stack>
     </Box>
@@ -68,7 +102,7 @@ const HeaderDrawer: React.FC<HeaderProps> = ({ mainStyle, OnRedirect }) => {
 
 const BodyCustom: React.FC<BodyProps> = ({ mainStyle }) => {
   return (
-    <Stack className={mainStyle.bodyCustom}>
+    <Stack className={mainStyle.bodyCustom} id="home">
       <Box
         display={"flex"}
         flexDirection={"row"}
@@ -81,6 +115,8 @@ const BodyCustom: React.FC<BodyProps> = ({ mainStyle }) => {
           <Typography variant="h4" className="markEditor">
             Hi, I'm Albert, a Web Developer.
           </Typography>
+
+          <ArrowNext referSection={"about"} />
         </Stack>
 
         <Stack
@@ -117,7 +153,11 @@ const BodyCustom: React.FC<BodyProps> = ({ mainStyle }) => {
           </Stack>
 
           <Divider
-            sx={{ backgroundColor: "#40424f", height: "2px", width: "50%" }}
+            sx={{
+              backgroundColor: "rgb(53, 57, 78)",
+              height: "2px",
+              width: "50%",
+            }}
           />
 
           <Stack gap={2} sx={{ width: "50%", py: 5 }}>
@@ -142,10 +182,6 @@ const BodyCustom: React.FC<BodyProps> = ({ mainStyle }) => {
               <ArrowForwardIcon />
             </Box>
           </Stack>
-
-          <Divider
-            sx={{ backgroundColor: "#40424f", height: "2px", width: "50%" }}
-          />
         </Stack>
       </Box>
     </Stack>
@@ -165,6 +201,7 @@ const GeneralBackground: React.FC = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          opacity: 0.5,
         }}
       />
       <Box
@@ -178,3 +215,122 @@ const GeneralBackground: React.FC = () => {
   );
 };
 
+const AboutSection: React.FC = () => {
+  return (
+    <Stack
+      id="about"
+      sx={{
+        zIndex: 100,
+        height: "90vh",
+        width: "100%",
+        paddingLeft: "2rem",
+        paddingRight: "2rem",
+        transition: "ease-in 0.5sec",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        gap: 4,
+        paddingTop: '5rem',
+      }}
+    >
+      <Typography variant="h5">About me</Typography>
+      <Stack gap={1}>
+        <Typography variant="body1">
+          Hi, my name is Alberto Nieto and I'm a web developer with a degree in
+          teleinformatics, I have a passion for web development and always
+          willing to learn more and set personal or professional challenges. I
+          Studied at the University of Guadalajara and I have worked for
+          software development companies at a national and international level
+          working for different world-renowned companies. In my last job I
+          worked for DocSolutions, a consulting company that provides services
+          to companies such as HSBC, Metlife, Santander, Banco Azteca, Fonacot,
+          AT&T, Autozone, DHL, etc.
+        </Typography>
+        <Typography variant="body1">
+          Also I worked for a company called Sicar, a company specialized in POS
+          (Point of Sale), I was in charge of the development of the hardware
+          module (printing, configuration, detectection of devices, etc.) and
+          some help to anothers modules. I also worked on the development of the
+          company's internal applications like Language manager, PDF Converter,
+          etc.
+        </Typography>
+      </Stack>
+      <Box>
+        <Typography>
+          I have experience in the development of web applications, mobile
+          applications (PWA), and desktop applications (Electron), I have worked
+          with different languages and technologies such as React JS, Next JS,
+          TypeScript, MySQL, Redux, Java, Python, Electron, Node JS, etc.
+        </Typography>
+      </Box>
+
+      <Box>
+        <Button
+          variant="outlined"
+          sx={{ color: "#fafafa", borderColor: "#fafafa" }}
+        >
+          Donwload CV
+        </Button>
+        <ArrowNext referSection={"contact"} />
+      </Box>
+      
+    </Stack>
+  );
+};
+
+const ContactSection: React.FC = () => {
+  return (
+    <Stack
+      id="contact"
+      sx={{
+        zIndex: 100,
+        height: "90vh",
+        width: "100%",
+        paddingLeft: "2rem",
+        paddingRight: "2rem",
+        transition: "ease-in 0.5sec",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        gap: 4,
+      }}
+    >
+      <Typography variant="h5">Contact</Typography>
+      <Stack gap={1}>
+        <Typography variant="h5">Email</Typography>
+        <Typography variant="body1">
+          albertonietocovarrubias@gmail.com
+        </Typography>
+      </Stack>
+    </Stack>
+  );
+};
+
+const ArrowNext: React.FC<ArrowProps> = ({ referSection }) => {
+  return (
+    <Stack sx={{ pt: 3 }}>
+      <HashLink
+        to={`#${referSection}`}
+        smooth
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "rgb(50, 73, 245)",
+            borderRadius: "1000px",
+            width: "5rem",
+            height: "5rem",
+            alignContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            pt: 1,
+            "&:hover": { cursor: "pointer" },
+          }}
+          // onClick={OnNextSection}
+        >
+          <KeyboardArrowDownIcon fontSize="large" />
+        </Box>
+      </HashLink>
+    </Stack>
+  );
+};

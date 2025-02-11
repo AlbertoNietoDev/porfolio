@@ -50,6 +50,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@iconify/react": "^4.1.1",
     "@testing-library/dom": "^9.3.1",
+    "@types/react-router-hash-link": "^2.4.9",
     "buffer": "npm:buffer@^6.0.3",
     "crypto": "npm:crypto-browserify@^3.12.0",
     "crypto-random-string": "^5.0.0",
