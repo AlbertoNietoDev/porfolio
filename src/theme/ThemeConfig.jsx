@@ -5,8 +5,6 @@ import { palette } from "./palette";
 import { typography } from "./typography";
 import { createShadows } from "./shadows";
 import { componentsOverride } from "./overrides";
-import { mainStyles } from "./mainStyles";
-
 export const ThemeConfig = ({ children }) => {
   const themeOptions = {
     palette,

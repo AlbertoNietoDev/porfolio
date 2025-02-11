@@ -28,7 +28,7 @@ const INFO = {
 
 export const palette: Palette = {
   primary: {
-    background: "#0d172d",
+    background: "#202128",
     dark: "#dedede",
     main: "#476EA5",
     main100: alpha("#476EA5", 1),

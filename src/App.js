@@ -18,9 +18,9 @@ function App() {
           <ThemeConfig>
             <Routes>
               <Route path="/">
-                <Route index element={<Navigate to="welcome" />} />
+                <Route index element={<Navigate to="home" />} />
                 <Route
-                  path="welcome"
+                  path="home"
                   element={<Welcome />}
                 />
               </Route>

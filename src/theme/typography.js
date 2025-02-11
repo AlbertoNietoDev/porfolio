@@ -17,7 +17,7 @@ const responsiveFontSizes = ({ sm, md, lg }) => {
   };
 };
 
-const FONT_PRIMARY = 'Montserrat';
+const FONT_PRIMARY = 'Yolk-Regular';
 
 export const typography = {
   fontFamily: FONT_PRIMARY,
@@ -67,6 +67,7 @@ export const typography = {
     },
   },
   body1: {
+    color: "#fafafa !important",
     lineHeight: 1.5,
     fontSize: pxToRem(12),
     ...responsiveFontSizes({ sm: 13, md: 14, lg: 15 }),
