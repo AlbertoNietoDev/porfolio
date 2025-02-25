@@ -2,6 +2,7 @@
   "name": "porfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://albertonietodev.github.io/porfolio/build",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -24,6 +25,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -55,6 +58,7 @@
     "crypto": "npm:crypto-browserify@^3.12.0",
     "crypto-random-string": "^5.0.0",
     "env-cmd": "^10.1.0",
+    "gh-pages": "^6.3.0",
     "http": "npm:stream-http@^3.2.0",
     "https": "npm:https-browserify@^1.0.0",
     "prettier": "^3.3.3",
