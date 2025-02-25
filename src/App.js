@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { SnackbarProvider } from "notistack";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Welcome } from "./pages/welcome";
 import { ThemeConfig } from "./theme/ThemeConfig";
@@ -14,7 +14,7 @@ function App() {
           horizontal: "right",
         }}
       >
-        <BrowserRouter basename={"/"}>
+        <Router basename={"/"}>
           <ThemeConfig>
             <Routes>
               <Route path="/">
@@ -26,7 +26,7 @@ function App() {
               </Route>
             </Routes>
           </ThemeConfig>
-        </BrowserRouter>
+        </Router>
       </SnackbarProvider>
     </Suspense>
   );
