@@ -69,11 +69,12 @@ const HeaderDrawer: React.FC<HeaderProps> = ({ mainStyle, OnRedirect }) => {
     <Box
       className={mainStyle.headerDrawer}
       sx={{
-        backgroundColor: hasBackground ? "rgba(0,0,0,0.2)" : "transparent",
+        backgroundColor: hasBackground ? "rgba(0,0,0,0.5)" : "transparent",
       }}
     >
       <Typography variant="h3">
-        <span className={mainStyle.spanTitleSyle}>{`{ : }`}</span> Developer X
+        <span className={mainStyle.spanTitleSyle}>{`{ : }`}</span>{" "}
+        AlbertoNietoDev
       </Typography>
       <Stack
         sx={{
@@ -89,7 +90,11 @@ const HeaderDrawer: React.FC<HeaderProps> = ({ mainStyle, OnRedirect }) => {
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <Box className="boxOptionsDrawer">
-              <Typography variant="body1" sx={{ fontWeight: 600 }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 600 }}
+                className="textTemp"
+              >
                 {item}
               </Typography>
             </Box>
@@ -104,30 +109,26 @@ const BodyCustom: React.FC<BodyProps> = ({ mainStyle }) => {
   return (
     <Stack className={mainStyle.bodyCustom} id="home">
       <Box
-        display={"flex"}
-        flexDirection={"row"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        sx={{ height: "100vh", gap: 5 }}
+        className={mainStyle.boxBody}
       >
-        <Stack gap={2} sx={{ width: "50%", px: 2 }}>
-          <Box sx={{ borderBottom: "5px solid white", width: "3rem" }}></Box>
-          <Typography variant="h4" className="markEditor">
+        <Stack className={mainStyle.presentationTextContainer}>
+          <Box className={mainStyle.presentationMark}></Box>
+          <Typography
+            className="markEditor"
+            sx={{
+              fontWeight: 500,
+              fontSize: "2vw !important",
+              textWrap: "nowrap",
+            }}
+          >
             Hi, I'm Albert, a Web Developer.
           </Typography>
 
           <ArrowNext referSection={"about"} />
         </Stack>
 
-        <Stack
-          sx={{
-            width: "50%",
-            px: 2,
-            flexDirection: "column",
-            alignItems: "flex-end",
-          }}
-        >
-          <Stack gap={2} sx={{ width: "50%", py: 5 }}>
+        <Stack className={mainStyle.rightSections}>
+          <Stack className={mainStyle.presentationStack}>
             <Typography variant="subtitle2">ABOUT ME</Typography>
             <Typography variant="subtitle1">
               Soy un desarrollador web con ingenieria en teleinformatica y con
@@ -153,14 +154,10 @@ const BodyCustom: React.FC<BodyProps> = ({ mainStyle }) => {
           </Stack>
 
           <Divider
-            sx={{
-              backgroundColor: "rgb(53, 57, 78)",
-              height: "2px",
-              width: "50%",
-            }}
+            className={mainStyle.sectionsDivider}
           />
 
-          <Stack gap={2} sx={{ width: "50%", py: 5 }}>
+          <Stack className={mainStyle.presentationStack}>
             <Typography variant="subtitle2">MY WORK</Typography>
             <Typography variant="subtitle1">
               Eh trabajado para empresas de desarrollo de software a nivel
@@ -230,7 +227,7 @@ const AboutSection: React.FC = () => {
         justifyContent: "center",
         alignItems: "flex-start",
         gap: 4,
-        paddingTop: '5rem',
+        paddingTop: "5rem",
       }}
     >
       <Typography variant="h5">About me</Typography>
@@ -273,7 +270,6 @@ const AboutSection: React.FC = () => {
         </Button>
         <ArrowNext referSection={"contact"} />
       </Box>
-      
     </Stack>
   );
 };
@@ -308,7 +304,7 @@ const ContactSection: React.FC = () => {
 
 const ArrowNext: React.FC<ArrowProps> = ({ referSection }) => {
   return (
-    <Stack sx={{ pt: 3 }}>
+    <Stack sx={{ mt: 3, width: "5rem" }}>
       <HashLink
         to={`#${referSection}`}
         smooth
