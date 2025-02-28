@@ -36,24 +36,26 @@ code {
 .boxOptionsDrawer:hover {
   cursor: pointer;
   border-bottom: 2px solid white;
-  /* animation: mark 0.5s normal; */
+  animation: mark 0.2s normal;
 }
 
-/* @keyframes mark {
+@keyframes mark {
   0%{
-    border-bottom: 0px solid white;
+    width: 0%;
+    /* border-bottom: 0px solid white; */
   }
   100%{
-    border-bottom: 2px solid white;
+    width: 100%;
+    /* border-bottom: 2px solid white; */
   }
-} */
+}
 
 .markEditor {
   overflow: hidden;
   border-right: .15em solid white;
   margin: 0 auto;
   letter-spacing: .15em;
-  width: 50vw;
+  width: 40vw;
   animation: 
     typing 2s steps(40, end),
     blink-caret .75s step-end infinite;

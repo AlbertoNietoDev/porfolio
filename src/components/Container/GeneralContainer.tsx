@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { Palette } from "../interfaces/palette";
+import { Palette } from "../../interfaces/palette";
 
 //ts-ignore
 export const GenericContainer = styled(Box)`

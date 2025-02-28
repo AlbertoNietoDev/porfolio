@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme: any) => ({
     padding: "1rem 2rem 1rem 2rem",
     height: "10vh",
     transition: "background-color 0.3s ease",
-    backdropFilter: "blur(1.0333px)",
+    // backdropFilter: "blur(1.0333px)",
   },
   bodyCustom: {
     scrollSnapAlign: "start",
