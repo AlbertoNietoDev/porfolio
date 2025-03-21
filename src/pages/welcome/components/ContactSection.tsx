@@ -1,11 +1,11 @@
 import { Stack, Typography } from "@mui/material";
 
-interface ContactProps{
+interface IContactProps{
     mainStyle: any,
     texts: any
 }
 
-export const ContactSection: React.FC<ContactProps> = ({mainStyle, texts}) => {
+export const ContactSection: React.FC<IContactProps> = ({mainStyle, texts}) => {
     return (
       <Stack
         id="contact"

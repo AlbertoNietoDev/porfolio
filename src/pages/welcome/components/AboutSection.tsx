@@ -1,12 +1,12 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { ArrowNext } from "../../../components/ArrowNext";
 
-interface AboutProps {
+interface IAboutProps {
   mainStyle: any;
   texts: any;
 }
 
-export const AboutSection: React.FC<AboutProps> = ({ mainStyle, texts }) => {
+export const AboutSection: React.FC<IAboutProps> = ({ mainStyle, texts }) => {
   return (
     <Stack
       id="about"
@@ -40,7 +40,7 @@ export const AboutSection: React.FC<AboutProps> = ({ mainStyle, texts }) => {
         >
           {texts.ABOUT.DOWNLOAD_CV}
         </Button>
-        <ArrowNext referSection={"contact"} />
+        <ArrowNext referSection={"portfolio"} />
       </Box>
     </Stack>
   );
